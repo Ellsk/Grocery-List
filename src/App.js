@@ -4,6 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Content from './Content';
 import { useState } from 'react';
+import AddItem from './AddItem';
 
 
 function App() {
@@ -43,11 +44,12 @@ function App() {
   return (
     <div className="App">
        <Header title ="Grocery List"/>
+       <AddItem />
        <Content 
           items={items}
           handleCheck={handleCheck}
           handleDelete={handleDelete}
-       />
+       /> 
        <Footer length={items.length}/>
     </div>
   );
