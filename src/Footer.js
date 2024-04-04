@@ -1,10 +1,11 @@
 import React from 'react'
 
-function Footer() {
-    const today = new Date();
+function Footer({ length }) {
+    // const today = new Date();
   return (
     <footer>
-        <p> Copyright &copy; {today.getFullYear()} </p>
+       <p> {length} List Items</p>
+        {/* <p> Copyright &copy; {today.getFullYear()} </p> */}
     </footer>
   )
 }
