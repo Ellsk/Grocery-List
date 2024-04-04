@@ -5,29 +5,16 @@ import Footer from './Footer';
 import Content from './Content';
 import { useState } from 'react';
 import AddItem from './AddItem';
+import Search from './Search';
 
 
 function App() {
-  const [items, setItems] = useState([
-    {
-      id: 1,
-      checked: false,
-      item: "One half pound of Cocoa Covered Almonds"
-    },
-    {
-      id: 2,
-      checked: false,
-      item: "Item 2"
-    },
-    {
-      id: 3,
-      checked: false,
-      item: "Item 3"
-    }
-  ])
+  const [items, setItems] = useState(JSON.parse(localStorage.getItem
+    ("shoppinglist")));
 
   const [newItem, setNewItems] = useState('');
 
+  const [search, setSearch] = useState('');
   const setAndSaveItems = (newItems) => {
     setItems(newItems);
     localStorage.setItem("shoppinglist", JSON.stringify(newItems));
@@ -67,8 +54,12 @@ function App() {
           setNewItems={setNewItems}
           handleSubmit={handleSubmit}
        />
+       <Search 
+        search={search}
+        setSearch={setSearch}
+       />
        <Content 
-          items={items}
+          items={items.filter((item)=> ((item.item).toLowerCase()).includes(search.toLowerCase()))}
           handleCheck={handleCheck}
           handleDelete={handleDelete}
        /> 
@@ -78,3 +69,5 @@ function App() {
 }
 
 export default App;
+
+// Provide a search bar form or component for searching Grocery item
